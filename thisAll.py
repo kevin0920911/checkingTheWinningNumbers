@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import ttk
 import tkinter.messagebox
 # -*- coding: big5 -*-
-def process(s):
+def process(event,s):
     input_.delete(0,'end')
     if len(s)==8:
         if s==number.nsa:
@@ -31,6 +31,7 @@ def process(s):
                 if s[-3:] == i[-3:]:# 末三碼相同
                     tkinter.messagebox.showinfo(title="中獎", message="你中了200!")  
                     break
+                
     else:
         tkinter.messagebox.showinfo(title="錯誤", message="格式錯誤")
 class involce:
@@ -50,10 +51,11 @@ window.geometry('500x400')
 window.resizable(1, 1)
 window.iconphoto(True, tk.PhotoImage(file="img\icon.png"))
 
-tk.Label(window, text='請輸入發票號碼',font=('Arial',20,'bold')).pack(anchor=tk.CENTER,padx=20, pady=10)
+tk.Label(window, text='請輸入發票號碼(Enter送出)',font=('Arial',20,'bold')).pack(anchor=tk.CENTER,padx=20, pady=10)
 input_ = tk.Entry(window, font=('Arial',20,'bold'))
 input_.pack(anchor=tk.CENTER,padx=20, pady=10)
 
-subimit = tk.Button(window, text='送出',font=('Arial',15,'bold'),command=lambda : process(input_.get()))     
-subimit.pack(anchor=tk.CENTER,padx=20, pady=10)    
+
+
+window.bind('<Return>',lambda x: process(x,input_.get()))
 window.mainloop()
