@@ -48,4 +48,3 @@ subimit = tk.Button(window_main, text='送出',font=('Arial',15,'bold'),command=
 subimit.pack(anchor=tk.CENTER,padx=20, pady=10)
 
 window_main.mainloop()
-
