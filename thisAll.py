@@ -13,46 +13,59 @@ pygame.mixer.init()
 def process(event,s):
     input_.delete(0,'end')
     if len(s)==8:
+        flag=0
         if s==number.nsa:
+            flag=1
             pygame.mixer.music.load("music\win.wav") 
             pygame.mixer.music.play() 
             tkinter.messagebox.showinfo(title="中獎", message="你中了1000萬!")
         elif s==number.ns:
+            flag=1
             pygame.mixer.music.load("music\win.wav") 
             pygame.mixer.music.play() 
             tkinter.messagebox.showinfo(title="中獎", message="你中了200萬!")
         else:
             for i in number.nb:
                 if s == i:# 對中頭獎
+                    flag=1
                     pygame.mixer.music.load("music\win.wav") 
                     pygame.mixer.music.play() 
                     tkinter.messagebox.showinfo(title="中獎", message="你中了20萬!")
                     break
                 if s[-7:] == i[-7:]:# 末七碼相同
+                    flag=1
                     pygame.mixer.music.load("music\win.wav") 
                     pygame.mixer.music.play()
                     tkinter.messagebox.showinfo(title="中獎", message="你中了4萬!")    
                     break
                 if s[-6:] == i[-6:]:# 末六碼相同
+                    flag=1
                     pygame.mixer.music.load("music\win.wav") 
                     pygame.mixer.music.play()
                     tkinter.messagebox.showinfo(title="中獎", message="你中了1萬!") 
                     break
                 if s[-5:] == i[-5:]:# 末五碼相同
+                    flag=1
                     pygame.mixer.music.load("music\win.wav") 
                     pygame.mixer.music.play()
                     tkinter.messagebox.showinfo(title="中獎", message="你中了4000!")   
                     break
                 if s[-4:] == i[-4:]:# 末四碼相同
+                    flag=1
                     pygame.mixer.music.load("music\win.wav") 
                     pygame.mixer.music.play()
                     tkinter.messagebox.showinfo(title="中獎", message="你中了1000!")    
                     break
                 if s[-3:] == i[-3:]:# 末三碼相同
+                    flag=1
                     pygame.mixer.music.load("music\win.wav") 
                     pygame.mixer.music.play()
                     tkinter.messagebox.showinfo(title="中獎", message="你中了200!")  
                     break
+        if flag==0:
+            a="fail"
+            pygame.mixer.music.load(f"music\{a}.wav") 
+            pygame.mixer.music.play()
                 
     else:
         tkinter.messagebox.showinfo(title="錯誤", message="格式錯誤")
